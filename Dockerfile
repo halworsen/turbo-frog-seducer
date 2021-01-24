@@ -39,6 +39,6 @@ RUN cd /home/pokitto && \
 RUN cd /home/pokitto && \
 		git clone https://github.com/halworsen/turbo-frog-seducer.git && \
 		arm-none-eabi-gcc --version && \
-		cd pokitto/tfs/ && \
+		cd turbo-frog-seducer/tfs && \
 		make clean && \
 		make -j ${nproc} -k
