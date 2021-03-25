@@ -1,7 +1,6 @@
 #include "state.h"
 #include "gamestates.h"
 #include "input.h"
-#include "resources/sprites.h"
 
 extern Statemachine stm;
 extern PlayingState playing_state;

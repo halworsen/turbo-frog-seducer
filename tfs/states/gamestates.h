@@ -1,7 +1,11 @@
+#ifndef GAMESTATES_H
+#define GAMESTATES_H
+
 #include "state.h"
 #include "Pokitto.h"
 #include "display/sprite.h"
 #include "input.h"
+#include "resources/sprites.h"
 
 class MenuState : public Gamestate {
 private:
@@ -85,3 +89,4 @@ public:
     void ButtonEvent(uint8_t button, bool pressed);
 };
 
+#endif

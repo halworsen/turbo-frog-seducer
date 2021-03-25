@@ -7,6 +7,8 @@
 
 extern Pokitto::Core game;
 
+extern const uint8_t sprites[243][258];
+
 Sprite::Sprite(
         uint8_t sprite_width,
         uint8_t sprite_height,

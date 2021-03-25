@@ -1,7 +1,6 @@
 #include "states/gamestates.h"
 #include "display/sprite.h"
 #include "input.h"
-#include "resources/sprites.h"
 #include "game.h"
 
 #include <string>
@@ -16,6 +15,8 @@
 extern Statemachine stm;
 extern GameoverState gameover_state;
 extern Pokitto::Core game;
+
+extern const uint8_t sprites[243][258];
 
 void PlayingState::Entered()
 {
@@ -215,7 +216,7 @@ void PlayingState::Draw(Pokitto::Display display)
         display.setColor(PALETTE_COLOR_BLACK);
         display.fillRectangle(0, 0, display.width, display.height);
         int rounded_time_left = ceil_div(this->start_time - cur_time, 1000);
-        string time_left = to_string(rounded_time_left) + "!";
+        std::string time_left = std::to_string(rounded_time_left) + "!";
         display.setColor(PALETTE_COLOR_WHITE);
         display.print(
             display.width / 2 - 3, display.height / 2 - 3,
@@ -277,20 +278,20 @@ void PlayingState::Draw(Pokitto::Display display)
 
     display.setColor(PALETTE_COLOR_BLACK);
     // Draw the current score
-    string x = "x";
-    string score = x + to_string(this->frogs_seduced);
+    std::string x = "x";
+    std::string score = x + std::to_string(this->frogs_seduced);
     display.print(2, 12, score.c_str());
 
     // Draw time left
     uint32_t left = (this->start_time + TIME_LIMIT) - cur_time;
     uint32_t seconds = ceil_div(left, 1000);
 
-    string minutes_str = "0" + to_string(seconds / 60);
-    string seconds_str = to_string(seconds % 60);
+    std::string minutes_str = "0" + std::to_string(seconds / 60);
+    std::string seconds_str = std::to_string(seconds % 60);
     if ((seconds % 60) < 10)
         seconds_str = "0" + seconds_str;
 
-    string time_remaining = minutes_str + ":" + seconds_str;
+    std::string time_remaining = minutes_str + ":" + seconds_str;
     display.print(2, 20, time_remaining.c_str());
 }
 
@@ -308,7 +309,6 @@ void PlayingState::GenerateMate()
     if (this->mate != nullptr)
         delete this->mate;
 
-    uint8_t old_mate = this->current_mate;
     // Make sure we get a new mate. Not to promote variety, just to prevent confusion
     // Konami code unlocks Kermit and Crazy Frog
     uint8_t mate_modulo = (this->frogs_seduced == 999) ? 7 : 5;

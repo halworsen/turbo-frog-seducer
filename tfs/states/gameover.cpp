@@ -1,12 +1,13 @@
 #include "state.h"
 #include "input.h"
 #include "gamestates.h"
-#include "resources/sprites.h"
 #include <string>
 
 extern Statemachine stm;
 extern MenuState menu_state;
 extern PlayingState playing_state;
+
+extern const uint8_t sprites[243][258];
 
 void GameoverState::Entered()
 {
@@ -56,7 +57,7 @@ void GameoverState::Draw(Pokitto::Display display)
 
     seduced.DrawSprite(display, 3, 16);
     display.drawLine(3, 24, 50, 24);
-    string score = "x" + to_string(playing_state.GetScore());
+    std::string score = "x" + std::to_string(playing_state.GetScore());
     display.print(3, 27, score.c_str());
 
     display.drawBitmap(23, 72, sprites[SPRITE_BUTTON_C_YELLOW]);

@@ -14,6 +14,7 @@ OBJECTS += states/playing.o
 OBJECTS += states/gameover.o
 OBJECTS += states/tutorial.o
 OBJECTS += display/sprite.o
+OBJECTS += resources/sprites.o
 
 ###############################################################################
 # Boiler-plate

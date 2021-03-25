@@ -1,6 +1,5 @@
 #include "state.h"
 #include "gamestates.h"
-#include "resources/sprites.h"
 
 extern Statemachine stm;
 extern MenuState menu_state;
